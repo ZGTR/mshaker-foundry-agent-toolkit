@@ -35,18 +35,18 @@ def test_environment_setup_idempotent_and_main_only(monkeypatch):
 
     monkeypatch.setattr(setup, "api", api)
     with pytest.raises(RuntimeError):
-        setup.configure("ZGTR/agent-tdd-lab")
+        setup.configure("ZGTR/mshaker-shared-agent-toolkit")
     assert not mutations
-    setup.configure("ZGTR/agent-tdd-lab", apply=True)
+    setup.configure("ZGTR/mshaker-shared-agent-toolkit", apply=True)
     assert len(mutations) == 2
-    setup.configure("ZGTR/agent-tdd-lab", apply=True)
+    setup.configure("ZGTR/mshaker-shared-agent-toolkit", apply=True)
     assert len(mutations) == 2
     state["policies"].append({"name": "*", "type": "branch"})
     with pytest.raises(RuntimeError):
-        setup.configure("ZGTR/agent-tdd-lab", apply=True)
+        setup.configure("ZGTR/mshaker-shared-agent-toolkit", apply=True)
     state["environment"] = {"deployment_branch_policy": None}
     with pytest.raises(RuntimeError):
-        setup.configure("ZGTR/agent-tdd-lab", apply=True)
+        setup.configure("ZGTR/mshaker-shared-agent-toolkit", apply=True)
     with pytest.raises(ValueError):
         setup.configure("../not-a-repo")
 

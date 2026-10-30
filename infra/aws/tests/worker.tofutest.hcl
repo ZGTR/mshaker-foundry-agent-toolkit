@@ -119,14 +119,14 @@ run "selected_models_and_ci_identity_only" {
   command = plan
   variables {
     bedrock_model_arns = ["arn:aws:bedrock:us-east-1::foundation-model/example.model-v1"]
-    github_repository  = "ZGTR/agent-tdd-lab"
+    github_repository  = "ZGTR/mshaker-shared-agent-toolkit"
   }
   assert {
     condition     = jsondecode(aws_iam_role_policy.evaluation[0].policy).Statement[0].Action == ["bedrock:InvokeModel"] && jsondecode(aws_iam_role_policy.evaluation[0].policy).Statement[0].Resource == ["arn:aws:bedrock:us-east-1::foundation-model/example.model-v1"]
     error_message = "CI may invoke only the selected model resources."
   }
   assert {
-    condition     = jsondecode(aws_iam_role.evaluation[0].assume_role_policy).Statement[0].Condition.StringEquals["token.actions.githubusercontent.com:sub"] == "repo:ZGTR/agent-tdd-lab:environment:live-evaluation"
+    condition     = jsondecode(aws_iam_role.evaluation[0].assume_role_policy).Statement[0].Condition.StringEquals["token.actions.githubusercontent.com:sub"] == "repo:ZGTR/mshaker-shared-agent-toolkit:environment:live-evaluation"
     error_message = "OIDC trust must bind the exact repository and protected evaluation environment."
   }
 }
@@ -139,6 +139,6 @@ run "reject_wildcard_inference" {
 
 run "reject_ci_role_without_model_access" {
   command = plan
-  variables { github_repository = "ZGTR/agent-tdd-lab" }
+  variables { github_repository = "ZGTR/mshaker-shared-agent-toolkit" }
   expect_failures = [aws_iam_role.evaluation]
 }

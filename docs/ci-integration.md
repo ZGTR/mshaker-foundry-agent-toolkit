@@ -6,7 +6,7 @@ There are three supported integration paths:
 
 | Path | Best fit | Entry point |
 | --- | --- | --- |
-| GitHub composite action | A GitHub repository with an existing Python or Node/Bun application | `uses: ZGTR/agent-tdd-lab@v1.3.0` |
+| GitHub composite action | A GitHub repository with an existing Python or Node/Bun application | `uses: ZGTR/mshaker-shared-agent-toolkit@v1.3.0` |
 | CLI command adapter | Any language and any CI system with Python 3.11–3.13 | `agent-tdd evaluate --executor-config ci/agent.json ...` |
 | Python SDK | Existing evaluation code needing custom executors/graders or in-process framework integration | `evaluate(suite, executor, grader, clock, ...)` |
 
@@ -248,7 +248,7 @@ jobs:
           python-version: '3.12'
       # Add your existing locked application install/setup steps here.
       # Pi additionally requires your selected Node/Bun runtime and SDK.
-      - uses: ZGTR/agent-tdd-lab@v1.3.0
+      - uses: ZGTR/mshaker-shared-agent-toolkit@v1.3.0
         with:
           cases: evals/agent.json
           executor-config: ci/agent.json
@@ -278,7 +278,7 @@ Offline contracts should run on every relevant application change. Hosted-model 
 The CLI and exit codes are portable. Install from the public Git repository at a reviewed immutable commit (or lock the resolved commit in your package manager):
 
 ```bash
-python -m pip install "agent-tdd-lab @ git+https://github.com/ZGTR/agent-tdd-lab.git@v1.3.0"
+python -m pip install "agent-tdd-lab @ git+https://github.com/ZGTR/mshaker-shared-agent-toolkit.git@v1.3.0"
 agent-tdd evaluate --cases evals/agent.json \
   --executor-config ci/agent.json --report artifacts/agent-gate.json \
   --repeats 3 --max-model-calls 8 --max-requests 100 --timeout 30
