@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Rename the repository to `ZGTR/mshaker-shared-agent-toolkit` (display name: Shared Agent Engineering Toolkit). Repository ID, history, license, the `agent-tdd-lab` distribution, `agent_tdd` imports and `agent-tdd` CLI are unchanged; update Action `uses:` references.
+
 ## 1.3.0
 
 - Add a reusable GitHub composite action and a CLI command-adapter path for existing agents, harnesses and multi-agent workflows in any language.

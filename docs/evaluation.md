@@ -142,8 +142,8 @@ The `run_evaluation` name above belongs to your adapter, not a vendor API. See [
 Configure the GitHub `live-evaluation` environment and restrict its deployment branches to `main`. An administrator can apply and verify the idempotent setup without providing any secret values to the script:
 
 ```bash
-python scripts/configure_live_environment.py --repo ZGTR/agent-tdd-lab --apply
-python scripts/configure_live_environment.py --repo ZGTR/agent-tdd-lab
+python scripts/configure_live_environment.py --repo ZGTR/mshaker-shared-agent-toolkit --apply
+python scripts/configure_live_environment.py --repo ZGTR/mshaker-shared-agent-toolkit
 ```
 
 The script refuses to widen or reset an existing different policy. The current connected GitHub integration can publish code/PRs but returned HTTP 403 for environment administration; no environment configuration or credentials were created during this release.
